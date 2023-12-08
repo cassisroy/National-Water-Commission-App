@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="National_Water_Commission_App.MainPage"
+             xmlns:model="clr-namespace:National_Water_Commission_App.Models"
+             xmlns:viewmodel="clr-namespace:National_Water_Commission_App.ViewModels"
+             x:DataType="viewmodel:CustListViewModel1"
+             Title="{Binding Title}">
+    <Grid ColumnSpacing="1" RowSpacing="1" Padding="5">
+        <Grid.RowDefinitions>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <VerticalStackLayout Padding="5" Grid.Row="0" Margin="9">
+            <Entry x:Name="FirstName1" Placeholder="Enter First Name" Text="{Binding FirstName1}"/>
+            <Entry x:Name="LastName1" Placeholder="Enter Last Name" Text="{Binding LastName1}"/>
+            <Entry x:Name="Address1" Placeholder="Enter Address" Text="{Binding Address1}"/>
+            <Entry x:Name="Telephone1" Placeholder="Enter Telephone" Text="{Binding Telephone1}"/>
+            <Entry x:Name="EmailAddress1" Placeholder="Enter Email Address" Text="{Binding EmailAddress1}"/>
+            <Entry x:Name="TRN1" Placeholder="Enter TRN" Text="{Binding TRN1}"/>
+        </VerticalStackLayout>
+
+        <Button Text="{Binding AddEditButtonText1}" Grid.Row="1" IsEnabled="{Binding IsNotLoading}"
+        Command="{Binding AddCustomerCommand}" Margin="9"/>
+
+        <Button Text="Clear" Command="{Binding DeleteCustomer1Command}" Grid.Row="2" IsEnabled="{Binding IsNotLoading}"
+        Margin="9"/>
+
+        <CollectionView ItemsSource="{Binding Customer1}" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Customers1">
+                    <Grid Padding="10" ColumnDefinitions="*,auto">
+                        <Frame HeightRequest="75" Grid.Column="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustListViewModel}},Path=GetCustDetailsCommand}" 
+                                                      CommandParameter="{Binding Id}" />
+                            </Frame.GestureRecognizers>
+                            <HorizontalStackLayout Padding="5" Spacing="5">
+                                <Label Text="{Binding FirstName1}"></Label>
+                                <Label Text="{Binding LastName1}"></Label>
+                            </HorizontalStackLayout>
+                        </Frame>
+                        <HorizontalStackLayout Grid.Column="1">
+                            <Button Text="Update" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustListViewModel}},Path=SetEditModeCommand}" 
+                                                      CommandParameter="{Binding Id}" Margin="8"/>
+                            <Button Text="Delete" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustListViewModel}},Path=DeleteCustCommand}" 
+                          CommandParameter="{Binding Id}" Margin="8"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+    <!--<Grid ColumnDefinitions="*,*" ColumnSpacing="5" RowDefinitions="*, Auto">
+        <CollectionView Grid.ColumnSpan="2" ItemsSource="{Binding Customer}" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Customers">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="90">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CustListViewModel}},Path=GetCustDetailsCommand}" 
+                                                      CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                            <HorizontalStackLayout Padding="10" Spacing="5">
+                                <Label Text="{Binding FirstName}"></Label>
+                                <Label Text="{Binding LastName}"></Label>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Fetch Customers" Command="{Binding GetCustListCommand}" IsEnabled="{Binding IsNotLoading}"
+                Grid.Row="1" Grid.Column="0" Margin="9">
+        </Button>
+    </Grid>-->
+
+
+
+
+</ContentPage>

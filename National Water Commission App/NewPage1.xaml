@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="National_Water_Commission_App.NewPage1"
+             xmlns:resources="clr-namespace:National_Water_Commission_App.Resources"
+             Title="NewPage1">
+    <VerticalStackLayout>
+        <Label 
+            Text="Count: 0"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            x:Name="lblCounter"
+            FontSize="22"
+            TextColor="{x:Static Member=resources:SharedResources.FontColour}"
+            FontAttributes="Bold"/>
+
+        <Button
+            Text="Click To Count"
+            Clicked="Button_Clicked"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            
+            />
+    </VerticalStackLayout>
+</ContentPage>

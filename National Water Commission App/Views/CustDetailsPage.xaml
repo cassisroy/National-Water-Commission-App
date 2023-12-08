@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="National_Water_Commission_App.Views.CustDetailsPage"
+             xmlns:vm="clr-namespace:National_Water_Commission_App.ViewModels"
+             Title="{Binding Customers1.TRN1}"
+             x:DataType="vm:CustDetailsViewModel1">
+    <StackLayout>
+        <Label 
+            Text="{Binding Customers1.FirstName1}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontSize="Large" />
+    </StackLayout>
+</ContentPage>
